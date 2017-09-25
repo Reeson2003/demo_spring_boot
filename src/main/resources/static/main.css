@@ -1,0 +1,44 @@
+body {
+    background-color: #fff090;
+}
+
+#dataInput {
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid #236f61 3px;
+    border-radius: 50px;
+}
+
+#data {
+    height: 20px;
+    margin-right: 20px;
+    color: #236f61;
+    border: solid 2px #236f61;
+    border-radius: 50px;
+    background-color: #fff3bf;
+    padding-left: 10px;
+}
+
+#data:focus {
+    outline: none;
+}
+
+#submit {
+    height: 30px;
+    width: 30px;
+    text-align: left;
+    color: #236f61;
+    border: solid 2px #236f61;
+    border-radius: 50px;
+    background-color: #fff3bf;
+}
+
+#submit:hover {
+    outline: none;
+    border-color: #43debd;
+}
+
+#submit:focus {
+    outline: none;
+}
