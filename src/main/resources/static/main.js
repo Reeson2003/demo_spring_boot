@@ -1,27 +1,60 @@
 /**
- * Created by Николай Новиков on 25.09.2017.
+ *@author Pavel Gavrilov
+ * 25.09.2017.
  */
 
-$(document).ready(setDataList());
+$(document).ready(getDataList());
 
-function setDataList() {
+function getDataList() {
     $.ajax({
         type: "GET",
         cache: false,
         url: '/messages',
         data: "",
-        success: function (response) {
-            var html = "";
-            console.log(response);
-            $.each(response, function (i) {
-                var message = response[i];
-                html = html + "<li>" + message.message + "<li/>";
-            });
-            $('#messages').html(html);
-        }
+        success: setDataList
     });
+
+    console.log($('#submit').prop('click'));
 }
 
-$('#submit').click(function () {
-    alert("Clicked");
-})
+function setDataList(response) {
+    var html = "";
+    console.log(response);
+    $.each(response, function (i) {
+        var message = response[i];
+        //language=HTML
+        html = html + "<a class='listItem' href='#' onclick='deleteItem(" + message.id + ")'>" + "<li>" + message.message + "</li>" + "</a>";
+    });
+    //language=JQuery-CSS
+    $('#messages').html(html);
+}
+
+function deleteItem(data) {
+    $.ajax({
+        type: "DELETE",
+        cache: false,
+        url: '/message' + '?' + $.param({"id": data}),
+        headers: {'id': data},
+        success: getDataList
+    });
+    console.log("ID:" + data)
+}
+
+$(function () {
+    //language=JQuery-CSS
+    $('#submit').click(addEntry);
+    //language=JQuery-CSS
+    $('#data').keypress(function (e) {
+        if (e.keyCode === 13) {
+    console.log(e.key);
+    addEntry();
+}
+    })
+});
+
+function addEntry() {
+    var inputField = $('#data');
+    $.post('/message', {data: inputField.val()}, getDataList);
+    inputField.val("");
+}
+

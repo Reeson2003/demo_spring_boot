@@ -12,12 +12,13 @@ body {
 
 #data {
     height: 20px;
-    margin-right: 20px;
+    margin-right: -20px;
     color: #236f61;
     border: solid 2px #236f61;
     border-radius: 50px;
     background-color: #fff3bf;
     padding-left: 10px;
+    padding-right: 20px;
 }
 
 #data:focus {
@@ -25,13 +26,17 @@ body {
 }
 
 #submit {
-    height: 30px;
-    width: 30px;
     text-align: left;
+    text-decoration: none;
+    font-size: small;
+    padding: 5px;
+    margin-bottom: -20px;
+    margin-right: 10%;
     color: #236f61;
     border: solid 2px #236f61;
     border-radius: 50px;
     background-color: #fff3bf;
+    cursor: hand;
 }
 
 #submit:hover {
@@ -41,4 +46,18 @@ body {
 
 #submit:focus {
     outline: none;
+}
+
+.listItem {
+    text-decoration: none;
+    color: #236f61;
+}
+
+.listItem:visited {
+    text-decoration: none;
+    color: #236f61;
+}
+
+.listItem:hover {
+    color: #43debd;
 }
